@@ -26,8 +26,6 @@ export function Home() {
         style: 'cancel'
       }
     ])
-    console.log(`Porra, ${name}`)
-
   }
 
   return (
