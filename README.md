@@ -1,2 +1,2 @@
 # ListOfParticipants
-Aplicativo mobile construindo para criar uma lista de participantes de um evento
+Aplicativo mobile desenvolvido para criação de uma lista de participantes para um evento.
