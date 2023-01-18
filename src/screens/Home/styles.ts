@@ -7,14 +7,25 @@ export const styles = StyleSheet.create({
       padding: 24
     },
     eventName: {
+      fontSize: 12,
+      color: '#31CF67',
+      marginTop: 45
+
+    },
+    eventDate: {
+      fontSize: 12,
+      color: '#31CF67',
+      marginTop: 10
+    },
+    eventNameInput: {
       color: '#FDFCFE',
       fontSize: 24,
       fontWeight: 'bold',
-      marginTop: 48
     },
-    eventDate: {
-      color: '#6B6B6B',
-      fontSize: 16
+    eventDateInput: {
+      color: '#FDFCFE',
+      fontSize: 24,
+      fontWeight: 'bold'
     },
     input: {
       flex: 1,
@@ -42,13 +53,30 @@ export const styles = StyleSheet.create({
       width: '100%',
       flexDirection: 'row',
       marginTop: 36,
-      marginBottom: 42
+      marginBottom: 30
     },
     listEmptyText: {
       color: '#FDFCFE',
       fontSize: 16,
       textAlign: 'center',
       marginTop: 20
+
+    },
+    deleteAllButton: {
+      width: 90,
+      height: 25,
+      borderRadius: 5,
+      backgroundColor: '#E23C44',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft: 276,
+      marginBottom: 15
+
+    },
+    deleteAllText: {
+      textAlign: 'center',
+      color: '#FDFCFE',
+      fontWeight: 'bold'
 
     }
   })

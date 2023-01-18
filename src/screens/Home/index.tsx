@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity, FlatList, Alert } from 'react-native'
 import { Participant } from '../../components/Participant'
 import { styles } from './styles'
@@ -11,8 +11,8 @@ export function Home() {
     if (participants.includes(participantName))
       return Alert.alert('Participante já existe', 'Já existe participante na lista com este nome.')
 
-      setParticipants(prevState => [...prevState, participantName])
-      setParticipantName('')
+    setParticipants(prevState => [...prevState, participantName])
+    setParticipantName('')
   }
 
   function handleParticipantRemove(name: string) {
@@ -20,7 +20,7 @@ export function Home() {
       {
         text: 'Sim',
         onPress: () => setParticipants(prevState => prevState.filter(participant => participant !== name))
-      }, 
+      },
       {
         text: 'Não',
         style: 'cancel'
@@ -28,10 +28,38 @@ export function Home() {
     ])
   }
 
+  function handleRemoveAllParticipants() {
+    return (
+      Alert.alert('Remover', 'Deseja remover todos os participantes?', [
+        {
+          text: 'Sim',
+          onPress: () => participants.length = 0
+        },
+        {
+          text: 'Não',
+          style: 'cancel'
+        }
+      ])
+
+    )
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.eventName}>Nome do Evento</Text>
-      <Text style={styles.eventDate}>Terça, 10 de Janeiro de 2023</Text>
+      <TextInput
+        style={styles.eventNameInput}
+        placeholder='Ex: Aniversário da Duda'
+        placeholderTextColor='#6B6B6B'
+      />
+      <Text style={styles.eventDate}>Data do Evento</Text>
+      <TextInput
+        style={styles.eventDateInput}
+        placeholder='Ex: 14/01/2023'
+        placeholderTextColor='#6B6B6B'
+      />
+
+
       <View style={styles.form}>
         <TextInput
           style={styles.input}
@@ -41,9 +69,13 @@ export function Home() {
           value={participantName}
         />
         <TouchableOpacity style={styles.button} onPress={handleParticipantAdd} >
-          <Text style={styles.buttonText}>+</Text>
+          <Text style={styles.buttonText} >+</Text>
         </TouchableOpacity>
       </View>
+
+      {participants.length !== 0 ? <TouchableOpacity style={styles.deleteAllButton} onPress={handleRemoveAllParticipants}>
+        <Text style={styles.deleteAllText}>apagar tudo</Text>
+      </TouchableOpacity> : null}
 
       <FlatList
         data={participants}
